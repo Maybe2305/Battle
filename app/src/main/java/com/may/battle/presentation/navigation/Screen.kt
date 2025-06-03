@@ -1,4 +1,4 @@
-package com.may.battle.navigation
+package com.may.battle.presentation.navigation
 
 sealed class Screen(val route: String) {
 

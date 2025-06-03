@@ -1,4 +1,4 @@
-package com.may.battle.navigation
+package com.may.battle.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -9,7 +9,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.may.battle.di.AppComponent
 import com.may.battle.presentation.screens.CategoryScreen
+import com.may.battle.presentation.screens.TournamentsListScreen
 import com.may.battle.presentation.viewmodels.CategoryViewModel
+import com.may.battle.presentation.viewmodels.TournamentListViewModel
 
 @Composable
 fun AppNavGraph(
@@ -30,6 +32,24 @@ fun AppNavGraph(
             CategoryScreen(viewModel = viewModel) { selectedCategory ->
                 navController.navigate("tournaments/${selectedCategory.id}")
             }
+        }
+
+        composable("tournaments/{categoryId}") { backStackEntry ->
+
+            val categoryId = backStackEntry.arguments?.getString("categoryId") ?: ""
+            val viewModel = remember {
+                TournamentListViewModel(
+                    getTournamentsUseCase = appComponent.getTournamentsByCategory(),
+                    categoryId = categoryId
+                )
+            }
+
+            TournamentsListScreen(
+                viewModel = viewModel,
+                onTournamentClick = { tournament ->
+                    // TODO() Навигация к экрану турнира
+                }
+            )
         }
     }
 }

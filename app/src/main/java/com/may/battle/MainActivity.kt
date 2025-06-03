@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.may.battle.di.TournamentApp
-import com.may.battle.navigation.AppNavGraph
+import com.may.battle.presentation.navigation.AppNavGraph
 import com.may.battle.ui.theme.BattleTheme
 
 class MainActivity : ComponentActivity() {
