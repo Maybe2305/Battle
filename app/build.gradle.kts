@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -56,4 +57,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Navigation compose
+    implementation(libs.androidx.navigation.compose)
+
+    //Dagger2
+    implementation(libs.dagger2)
+
+    //Dagger2 кодогенератор
+    ksp(libs.dagger2.compiler)
+
+    //Dagger2 аннотации
+    ksp(libs.dagger2.android.processor)
 }
